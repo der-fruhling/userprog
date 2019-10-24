@@ -24,10 +24,10 @@ def http(url, output)
 end
 
 def github(repo, output)
-    print_name_start url
+    print_name_start repo
     system "git clone https://github.com/#{repo} tmp"
     system "make -C tmp"
     FileUtils.mv 'tmp/output.bin', "img/#{output}"
     FileUtils.rm_r 'tmp'
-    print_name_end url
+    print_name_end repo
 end
